@@ -62,6 +62,7 @@ import { User, Lock } from "@element-plus/icons-vue";
 import { createClient } from "@supabase/supabase-js";
 import { login } from "~/auth.js";
 import { useRouter } from "vue-router";
+import { ElMessage } from "element-plus";
 
 const supabaseUrl = "https://vnswcmkocaomjscnsdsl.supabase.co";
 const supabaseAnonKey =
@@ -107,13 +108,17 @@ async function signInWithUsername(username, password) {
     const isPasswordCorrect = password === users.password_hash;
 
     if (!isPasswordCorrect) {
+      ElMessage.error("密码错误");
       console.error("密码错误");
       return false;
     }
-
+    ElMessage({
+      message: "登录成功.",
+      type: "success",
+    });
     console.log("登录成功");
     login(); // 更新 isAuthenticated 状态
-    location.reload()
+    location.reload();
 
     return true;
   } catch (error) {
@@ -121,6 +126,4 @@ async function signInWithUsername(username, password) {
     return false;
   }
 }
-
-
 </script>

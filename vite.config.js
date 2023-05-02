@@ -10,4 +10,5 @@ export default defineConfig({
     },
   },
   plugins: [vue(), WindiCSS()],
+  assetsInclude: ["**/*.jpg", "**/*.png", "**/*.svg", "**/*.gif"],
 });

@@ -68,7 +68,7 @@ async function fetchData() {
       order_name: order.product_title,
       order_tons: order.tons + "吨",
       order_total: order.total_price + "тг",
-      order_img: `~/assets/${order.product_image}`,
+      order_img: `/assets/${order.product_image}`,
     };
   });
 }
